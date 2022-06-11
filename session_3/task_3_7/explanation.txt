@@ -1,0 +1,21 @@
+1. Run the module "modules/mod_a.py". Check its result. Explain why does this happen.
+mod_c module import "mod_c.x" variable.
+mod_b module import "mod_b.mod_c.x" variable.
+"mod_b.mod_c.x" overwrite "mod_c.x" in namespace mod_a.
+"mod_c.x" variable in both modules is 5.
+Example:
+import mod_c
+print(mod_c.x) --> value from mod_c will print 5
+import mod_b
+print(mod_c.x) --> overwrite value from mod_c on value from mod_b will print 5
+
+2. Try to change x to a list "[1,2,3]". Explain the result.
+The same as in previous variant, value from mod_b overwrite value from mod_c.
+import mod_c
+print(mod_c.x) --> value from mod_c will print [1, 2, 3]
+import mod_b
+print(mod_c.x) --> overwrite value from mod_c on value from mod_b will print 5
+
+3. Try to change import to "from x import *" where x - module names. Explain the result.
+"mod_c.x" is taken from mod_b module.
+mod_c module import "x" value.
